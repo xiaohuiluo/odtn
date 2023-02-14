@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+  onos:
+    image: onosproject/onos:2.2.0-b1
+    network_mode: host
+    environment:
+      - ONOS_APPS=odtn-service,drivers,gui2,roadm,optical-rest
+  cassini_1:
+    image: onosproject/oc-cassini:0.21
+    network_mode: bridge
+    ports:
+      - "11002:830"
+  cassini_2:
+    image: onosproject/oc-cassini:0.21
+    network_mode: bridge
+    ports:
+      - "11003:830"
+  tapi_ols:
+    image: onosproject/tapi-2.1:0.01
+    network_mode: bridge
+    ports:
+      - "11000:1234"
